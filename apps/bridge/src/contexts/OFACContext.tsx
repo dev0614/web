@@ -20,24 +20,7 @@ export const OFACContext = createContext<OFACContextType>({
 });
 
 export async function fetchIsAllowed(address?: `0x${string}`): Promise<{ result: boolean }> {
-  if (!address) {
-    return { result: false };
-  }
-
-  const response = await fetch(publicRuntimeConfig.bridgeApiURL, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      jsonrpc: '2.0',
-      method: 'verifier_isAllowed',
-      params: [address],
-      id: 0,
-    }),
-  });
-
-  return (await response.json()) as { result: boolean };
+  return { result: true };
 }
 
 export const OFACProvider = memo<OFACProviderProps>(function OFACProvider({
